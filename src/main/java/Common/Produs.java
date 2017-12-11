@@ -1,6 +1,8 @@
 package Common;
 
-public class Produs {
+import java.io.Serializable;
+
+public class Produs implements Serializable{
     String nume;
     String cod_produs;
     String pret_unitar;

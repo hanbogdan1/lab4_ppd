@@ -1,8 +1,9 @@
 package Common;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Vanzare {
+public class Vanzare implements Serializable {
 
     Date data;
     Produs produs;

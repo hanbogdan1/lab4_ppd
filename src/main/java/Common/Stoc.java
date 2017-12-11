@@ -1,6 +1,8 @@
 package Common;
 
-public class Stoc {
+import java.io.Serializable;
+
+public class Stoc implements Serializable {
     String cod_produs;
     int cantitate;
 
