@@ -1,0 +1,6 @@
+apa;123;2;L;12
+cola;34;5;L;124
+oreo;1;6;g;16
+tigari;11;31;pachet;55
+cana;2;15;buc;23
+ceapa;13;1;kg;55
