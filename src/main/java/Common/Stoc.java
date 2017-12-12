@@ -3,27 +3,29 @@ package Common;
 import java.io.Serializable;
 
 public class Stoc implements Serializable {
-    String cod_produs;
-    int cantitate;
 
-    public Stoc(String cod_produs, int cantitate) {
-        this.cod_produs = cod_produs;
+    Produs produs;
+    Integer cantitate;
+
+    public Stoc(Produs produs, Integer cantitate) {
+        this.produs = produs;
         this.cantitate = cantitate;
     }
 
-    public String getCod_produs() {
-        return cod_produs;
+    public Produs getProdus() {
+        return produs;
     }
 
-    public void setCod_produs(String cod_produs) {
-        this.cod_produs = cod_produs;
+    public void setProdus(Produs produs) {
+        this.produs = produs;
     }
 
-    public int getCantitate() {
+    public Integer getCantitate() {
         return cantitate;
     }
 
-    public void setCantitate(int cantitate) {
+    public void setCantitate(Integer cantitate) {
         this.cantitate = cantitate;
     }
+
 }

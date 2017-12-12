@@ -9,6 +9,5 @@ public class Client {
 
         ApplicationContext context = new ClassPathXmlApplicationContext("rmiAppContext.xml");
         iStoreInterface clientProst = (iStoreInterface) context.getBean("Service");
-        System.out.println(clientProst.testrm());
     }
 }

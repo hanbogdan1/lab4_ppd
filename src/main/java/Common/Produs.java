@@ -5,10 +5,20 @@ import java.io.Serializable;
 public class Produs implements Serializable{
     String nume;
     String cod_produs;
-    String pret_unitar;
+    Float pret_unitar;
     String unit_masura;
 
-    public Produs(String nume, String cod_produs, String pret_unitar, String unit_masura) {
+    @Override
+    public String toString() {
+        return "Produs{" +
+                "nume='" + nume + '\'' +
+                ", cod_produs='" + cod_produs + '\'' +
+                ", pret_unitar=" + pret_unitar +
+                ", unit_masura='" + unit_masura + '\'' +
+                '}';
+    }
+
+    public Produs(String nume, String cod_produs, Float pret_unitar, String unit_masura) {
         this.nume = nume;
         this.cod_produs = cod_produs;
         this.pret_unitar = pret_unitar;
@@ -32,11 +42,11 @@ public class Produs implements Serializable{
         this.cod_produs = cod_produs;
     }
 
-    public String getPret_unitar() {
+    public float getPret_unitar() {
         return pret_unitar;
     }
 
-    public void setPret_unitar(String pret_unitar) {
+    public void setPret_unitar(float pret_unitar) {
         this.pret_unitar = pret_unitar;
     }
 

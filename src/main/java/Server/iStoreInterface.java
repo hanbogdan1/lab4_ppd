@@ -8,5 +8,4 @@ import java.util.Date;
 import java.util.List;
 
 public interface iStoreInterface {
-    String testrm();
 }

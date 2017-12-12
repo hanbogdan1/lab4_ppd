@@ -35,6 +35,15 @@ public class Vanzare implements Serializable {
         return cantitate;
     }
 
+    @Override
+    public String toString() {
+        return "Vanzare{" +
+                "data=" + data +
+                ", produs=" + produs +
+                ", cantitate=" + cantitate +
+                '}';
+    }
+
     public void setCantitate(int cantitate) {
         this.cantitate = cantitate;
     }
