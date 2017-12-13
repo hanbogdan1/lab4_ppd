@@ -40,6 +40,6 @@ public class Client {
             opt = keyboard.next();
         }
 
-        return lista_prod.get(Integer.parseInt(opt)).getCod_produs();
+        return lista_prod.get(Integer.parseInt(opt) - 1).getCod_produs();
     }
 }

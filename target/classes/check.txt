@@ -1,6 +1,6 @@
-apa;123;2;L;1211
-cola;34;5;L;124133
-oreo;1;6;g;16231
-tigari;11;31;pachet;5523
-cana;2;15;buc;233
-ceapa;13;1;kg;5531
+apa;123;2;L;1
+cola;34;5;L;1333
+oreo;1;6;g;16812
+tigari;11;31;pachet;5333
+cana;2;15;buc;2322
+ceapa;13;1;kg;31221

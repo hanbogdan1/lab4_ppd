@@ -35,5 +35,10 @@
         <artifactId>spring-context</artifactId>
         <version>${spring.version}</version>
     </dependency>
+        <dependency>
+            <groupId>lab4.ppd.rmi</groupId>
+            <artifactId>lab4_ppd</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
