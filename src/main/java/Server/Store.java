@@ -8,30 +8,38 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import javax.xml.crypto.Data;
+import java.beans.FeatureDescriptor;
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Store implements iStoreInterface {
 
     public float sold;
     public float sold_initial;
     public Date last_scan_date;
-    List<Factura> facturi_emise;
     //(cod_produs, Stoc)
-    HashMap<String, Stoc> stocuri_existente;
+    private List<Factura> facturi_emise;
+    private HashMap<String, Stoc> stocuri_existente;
     //(cod_produs,Vanzare)
-    MultiValueMap<String, Vanzare> vanzari_efectuate;
-    BufferedWriter bwVanzari;
-    BufferedWriter bwLog;
+    private MultiValueMap<String, Vanzare> vanzari_efectuate;
+    private BufferedWriter bwVanzari;
+    private BufferedWriter bwLog;
     private Random rand;
 
-    public Store() {
+    private ThreadPoolExecutor executor ;
+    private ReentrantReadWriteLock lock;
 
-        sold = sold_initial = 10;
+    public Store() {
+        executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
+
+        sold = sold_initial = 0;
         facturi_emise = new ArrayList<Factura>();
         stocuri_existente = new HashMap<String, Stoc>();
         vanzari_efectuate = new LinkedMultiValueMap<String, Vanzare>();
         rand = new Random();
+        lock = new ReentrantReadWriteLock();
 
         try {
 
@@ -79,20 +87,24 @@ public class Store implements iStoreInterface {
 
         Thread t = new Thread(new Runnable() {
             public void run() {
+                int i=0;
                 while(true){
                         generare_vanzare();
+                        i ++;
 
+                        if ( i > 100){
+                            i = 0;
+                            verificare();
+                        }
                     try {
-                        Thread.currentThread().sleep(5000);
+                        Thread.currentThread().sleep(3000);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
                 }
         });
-
         t.start();
-
     }
 
     private void load_data() {
@@ -128,44 +140,89 @@ public class Store implements iStoreInterface {
 
     }
 
-    String creare_vanzare(String cod_produs, Integer cantitate) {
+    Future<String> buy (String cod_produs, Integer cantitate){
+        Callable<String> callbl = new BuyCallable(cod_produs,cantitate);
+        return  executor.submit(callbl);
+    }
+
+    String creare_vanzare(String cod_produs, Integer cantitate){
+
+
+        try {
+            return buy(cod_produs,cantitate).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return "A aparut o eroare ! " ;
+    }
+
+    private class BuyCallable implements Callable<String>{
+        private String cod_produs;
+        private Integer cantitate;
+
+        public BuyCallable(String cod_produs, Integer cantitate) {
+            this.cod_produs = cod_produs;
+            this.cantitate = cantitate;
+        }
+
+        @Override
+        public String call() throws Exception {
+            return creare_vanz(cod_produs,cantitate);
+        }
+    }
+
+    String creare_vanz(String cod_produs, Integer cantitate) {
+
+        lock.readLock().lock();
 
         //validare
         {
             if (cantitate <= 0) {
+                lock.readLock().unlock();
                 return "Cantitatea introdusa este incorecta";
             }
 
             if (!stocuri_existente.containsKey(cod_produs)) {
+                lock.readLock().unlock();
                 return "Produsul ales nu exista";
             }
 
-            if (stocuri_existente.get(cod_produs).getCantitate() < cantitate)
+            if (stocuri_existente.get(cod_produs).getCantitate() < cantitate) {
+                lock.readLock().unlock();
                 return "Stoc insuficient!";
+            }
         }
 
-        stocuri_existente.get(cod_produs).setCantitate(stocuri_existente.get(cod_produs).getCantitate() - cantitate);
-        Vanzare newVanzare = new Vanzare(Calendar.getInstance().getTime(), stocuri_existente.get(cod_produs).getProdus(), cantitate);
-        vanzari_efectuate.add(cod_produs, newVanzare);
+        synchronized (stocuri_existente.get(cod_produs)) {
+            stocuri_existente.get(cod_produs).setCantitate(stocuri_existente.get(cod_produs).getCantitate() - cantitate);
+            Vanzare newVanzare = new Vanzare(Calendar.getInstance().getTime(), stocuri_existente.get(cod_produs).getProdus(), cantitate);
+            vanzari_efectuate.add(cod_produs, newVanzare);
 
-        sold += cantitate * stocuri_existente.get(cod_produs).getProdus().getPret_unitar();
+            sold += cantitate * stocuri_existente.get(cod_produs).getProdus().getPret_unitar();
+            try {
+                bwLog.write(newVanzare.toString() + "stoc ramas : " + stocuri_existente.get(cod_produs).getCantitate().toString() + "\n");
+                bwLog.write("sold = " + sold + "\n\n");
 
-
-        try {
-            bwLog.write(newVanzare.toString() + "stoc ramas : " + stocuri_existente.get(cod_produs).getCantitate().toString() + "\n");
-            bwLog.write("sold = " + sold + "\n\n");
-
-            bwVanzari.write(cod_produs + ";" + cantitate.toString() + "\n");
-        } catch (IOException e) {
-            e.printStackTrace();
+                bwVanzari.write(cod_produs + ";" + cantitate.toString() + "\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            finally {
+                lock.readLock().unlock();
+            }
+            return "Adaugare efectuata cu succes!";
         }
-        return "Adaugare efectuata cu succes!";
     }
 
     private void generare_vanzare() {
+        lock.readLock().lock();
         int index = rand.nextInt(stocuri_existente.size());
         List<String> l = new ArrayList<String>(stocuri_existente.keySet());
-        creare_vanzare(l.get(index), rand.nextInt(10));
+        lock.readLock().unlock();
+        creare_vanz(l.get(index), rand.nextInt(10));
     }
 
     @Override
@@ -175,12 +232,17 @@ public class Store implements iStoreInterface {
 
     @Override
     public List<Produs> get_all_produse() {
+
+        lock.readLock().lock();
+
         List<Produs> prod = new ArrayList<Produs>();
 
         for (Stoc st : stocuri_existente.values()) {
             prod.add(st.getProdus());
         }
+        lock.readLock().unlock();
         return prod;
+
     }
 
     void verificare() {
@@ -196,6 +258,9 @@ public class Store implements iStoreInterface {
     public Boolean verificare_executie() throws IOException {
 
         //(cod_produs, Stoc)
+
+        lock.writeLock().lock();
+
         HashMap<String, Stoc> map_stoc = new HashMap<String, Stoc>();
 
         try {
@@ -278,6 +343,7 @@ public class Store implements iStoreInterface {
 
         bwLog.write("\n---**--- Verificare efectuata cu succes! ---**--- \n\n");
 
+        lock.writeLock().unlock();
         return true;
     }
 

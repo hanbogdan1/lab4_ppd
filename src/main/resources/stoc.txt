@@ -4,3 +4,4 @@ oreo;1;6;g;16812
 tigari;11;31;pachet;5333
 cana;2;15;buc;2322
 ceapa;13;1;kg;31221
+

@@ -1,52 +1,43 @@
 Loading data 
-Vanzare{data=Wed Dec 13 02:18:36 EET 2017, produs=Produs{nume='tigari', cod_produs='11', pret_unitar=31.0, unit_masura='pachet'}, cantitate=9}stoc ramas : 5324
-sold = 289.0
+Vanzare{data=Mon Dec 18 00:49:59 EET 2017, produs=Produs{nume='cola', cod_produs='34', pret_unitar=5.0, unit_masura='L'}, cantitate=2}stoc ramas : 1331
+sold = 10.0
 
-Vanzare{data=Wed Dec 13 02:18:41 EET 2017, produs=Produs{nume='tigari', cod_produs='11', pret_unitar=31.0, unit_masura='pachet'}, cantitate=9}stoc ramas : 5315
-sold = 568.0
+Vanzare{data=Mon Dec 18 00:50:02 EET 2017, produs=Produs{nume='tigari', cod_produs='11', pret_unitar=31.0, unit_masura='pachet'}, cantitate=3}stoc ramas : 5330
+sold = 103.0
 
-Vanzare{data=Wed Dec 13 02:18:51 EET 2017, produs=Produs{nume='oreo', cod_produs='1', pret_unitar=6.0, unit_masura='g'}, cantitate=3}stoc ramas : 16809
-sold = 586.0
+Vanzare{data=Mon Dec 18 00:50:11 EET 2017, produs=Produs{nume='cola', cod_produs='34', pret_unitar=5.0, unit_masura='L'}, cantitate=3}stoc ramas : 1328
+sold = 118.0
 
-Vanzare{data=Wed Dec 13 02:19:16 EET 2017, produs=Produs{nume='tigari', cod_produs='11', pret_unitar=31.0, unit_masura='pachet'}, cantitate=7}stoc ramas : 5308
-sold = 803.0
+Vanzare{data=Mon Dec 18 00:50:14 EET 2017, produs=Produs{nume='tigari', cod_produs='11', pret_unitar=31.0, unit_masura='pachet'}, cantitate=1}stoc ramas : 5329
+sold = 149.0
 
-Vanzare{data=Wed Dec 13 02:19:21 EET 2017, produs=Produs{nume='ceapa', cod_produs='13', pret_unitar=1.0, unit_masura='kg'}, cantitate=3}stoc ramas : 31218
-sold = 806.0
+Vanzare{data=Mon Dec 18 00:50:20 EET 2017, produs=Produs{nume='cana', cod_produs='2', pret_unitar=15.0, unit_masura='buc'}, cantitate=5}stoc ramas : 2317
+sold = 224.0
 
-Vanzare{data=Wed Dec 13 02:19:26 EET 2017, produs=Produs{nume='oreo', cod_produs='1', pret_unitar=6.0, unit_masura='g'}, cantitate=5}stoc ramas : 16804
-sold = 836.0
+Vanzare{data=Mon Dec 18 00:50:23 EET 2017, produs=Produs{nume='cola', cod_produs='34', pret_unitar=5.0, unit_masura='L'}, cantitate=7}stoc ramas : 1321
+sold = 259.0
 
-Vanzare{data=Wed Dec 13 02:19:31 EET 2017, produs=Produs{nume='cola', cod_produs='34', pret_unitar=5.0, unit_masura='L'}, cantitate=6}stoc ramas : 1327
-sold = 866.0
+Vanzare{data=Mon Dec 18 00:50:26 EET 2017, produs=Produs{nume='ceapa', cod_produs='13', pret_unitar=1.0, unit_masura='kg'}, cantitate=4}stoc ramas : 31217
+sold = 263.0
 
-Vanzare{data=Wed Dec 13 02:19:41 EET 2017, produs=Produs{nume='cola', cod_produs='34', pret_unitar=5.0, unit_masura='L'}, cantitate=6}stoc ramas : 1321
-sold = 896.0
+Vanzare{data=Mon Dec 18 00:50:29 EET 2017, produs=Produs{nume='tigari', cod_produs='11', pret_unitar=31.0, unit_masura='pachet'}, cantitate=9}stoc ramas : 5320
+sold = 542.0
 
-Vanzare{data=Wed Dec 13 02:19:46 EET 2017, produs=Produs{nume='ceapa', cod_produs='13', pret_unitar=1.0, unit_masura='kg'}, cantitate=1}stoc ramas : 31217
-sold = 897.0
+Vanzare{data=Mon Dec 18 00:50:32 EET 2017, produs=Produs{nume='cana', cod_produs='2', pret_unitar=15.0, unit_masura='buc'}, cantitate=9}stoc ramas : 2308
+sold = 677.0
 
-Vanzare{data=Wed Dec 13 02:19:51 EET 2017, produs=Produs{nume='oreo', cod_produs='1', pret_unitar=6.0, unit_masura='g'}, cantitate=4}stoc ramas : 16800
-sold = 921.0
+Vanzare{data=Mon Dec 18 00:50:35 EET 2017, produs=Produs{nume='cana', cod_produs='2', pret_unitar=15.0, unit_masura='buc'}, cantitate=3}stoc ramas : 2305
+sold = 722.0
 
-Vanzare{data=Wed Dec 13 02:19:56 EET 2017, produs=Produs{nume='oreo', cod_produs='1', pret_unitar=6.0, unit_masura='g'}, cantitate=7}stoc ramas : 16793
-sold = 963.0
+Vanzare{data=Mon Dec 18 00:50:38 EET 2017, produs=Produs{nume='apa', cod_produs='123', pret_unitar=2.0, unit_masura='L'}, cantitate=1}stoc ramas : 0
+sold = 724.0
 
-Vanzare{data=Wed Dec 13 02:19:57 EET 2017, produs=Produs{nume='tigari', cod_produs='11', pret_unitar=31.0, unit_masura='pachet'}, cantitate=1}stoc ramas : 5307
-sold = 994.0
+Vanzare{data=Mon Dec 18 00:50:41 EET 2017, produs=Produs{nume='oreo', cod_produs='1', pret_unitar=6.0, unit_masura='g'}, cantitate=8}stoc ramas : 16804
+sold = 772.0
 
-Vanzare{data=Wed Dec 13 02:19:57 EET 2017, produs=Produs{nume='tigari', cod_produs='11', pret_unitar=31.0, unit_masura='pachet'}, cantitate=1}stoc ramas : 5306
-sold = 1025.0
+Vanzare{data=Mon Dec 18 00:50:44 EET 2017, produs=Produs{nume='oreo', cod_produs='1', pret_unitar=6.0, unit_masura='g'}, cantitate=7}stoc ramas : 16797
+sold = 814.0
 
-Vanzare{data=Wed Dec 13 02:19:58 EET 2017, produs=Produs{nume='tigari', cod_produs='11', pret_unitar=31.0, unit_masura='pachet'}, cantitate=1}stoc ramas : 5305
-sold = 1056.0
-
-Vanzare{data=Wed Dec 13 02:19:59 EET 2017, produs=Produs{nume='tigari', cod_produs='11', pret_unitar=31.0, unit_masura='pachet'}, cantitate=1}stoc ramas : 5304
-sold = 1087.0
-
-Vanzare{data=Wed Dec 13 02:20:01 EET 2017, produs=Produs{nume='ceapa', cod_produs='13', pret_unitar=1.0, unit_masura='kg'}, cantitate=8}stoc ramas : 31209
-sold = 1095.0
-
-Vanzare{data=Wed Dec 13 02:20:06 EET 2017, produs=Produs{nume='cola', cod_produs='34', pret_unitar=5.0, unit_masura='L'}, cantitate=5}stoc ramas : 1316
-sold = 1120.0
+Vanzare{data=Mon Dec 18 00:50:47 EET 2017, produs=Produs{nume='oreo', cod_produs='1', pret_unitar=6.0, unit_masura='g'}, cantitate=3}stoc ramas : 16794
+sold = 832.0
 
